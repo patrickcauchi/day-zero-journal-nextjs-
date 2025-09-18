@@ -23,10 +23,11 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - run: npm run build   # <-- build handles static export automatically
+      - run: npm run build        # ⬅️ this alone creates ./out
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out        # Next will already put the export here
+          path: ./out
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
